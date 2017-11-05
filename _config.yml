@@ -1,4 +1,5 @@
-name: Hank Quinlan, Horrible Cop
+name: thirtythreedown
 markdown: kramdown
 
-permalink: /blog/:year/:month/:day/:title
+plugins:
+  - jekyll-feed
