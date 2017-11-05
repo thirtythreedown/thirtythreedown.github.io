@@ -1,1 +1,1 @@
-# 33down.github.io
+This is the repository for the thirtythreedown website.
