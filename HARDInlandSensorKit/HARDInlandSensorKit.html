@@ -1,0 +1,542 @@
+---
+layout: default
+
+title: Thirty Three Down Studio
+---
+<div class="blurb">
+<h1>[HARD] Inland 24 sensors kit</h1>
+
+
+
+<h4>Temperature Sensor</h4>
+<img src="KY001-TemperatureSensor.JPG" alt="Temperature">
+<p>
+<b>Pin connections</b>
+<ul>
+  <li>(+) +5V
+  <li>(-) Ground
+  <li>(S) Signal
+</ul>
+</p>
+
+<p>
+It has an operating range of -10C to
++85C. The module also includes an LED and utilizes I2C serial
+communication through the (S) Signal pin.
+</p>
+
+<p>
+Dallas 18B20 information:
+http://www.maximintegrated.com/en/products/analog/sensorsand-sensor-interface/DS18B20.html
+For code examples, see:
+<ul>
+  <li>http://playground.arduino.cc/Learning/OneWire
+  <li>http://playground.arduino.cc/Main/GetOneWireTemp
+  <li>http://playground.arduino.cc/ComponentLib/Thermistor
+  <li>https://tkkrlab.nl/wiki/Arduino_KY-001_Temperature_sensor_module
+</ul>
+</p>
+
+  <h4>Vibration Sensor</h4>
+  <img src="KY0002-VibrationSensor.JPG" alt="VibrationSensor">
+	<p>
+	The vibration sensor consists of a spring connected to one
+	contact and a pin inside the spring connected to the other
+	contact. Vibration of the spring will cause the spring to come
+	into contact with the pin, closing the switch circuit briefly.
+	</p>
+
+	<p>
+	The surface mount resistor (103 = 10K ohms) pulls the signal
+	pin up to +5V. When the contacts close, the signal pin is
+	pulled to ground.
+	<b>Arduino code example</b>
+<ul>
+	<li>File, Examples, 02.Digital, Debounce
+	<li>https://tkkrlab.nl/wiki/Arduino_KY-002_Vibration_switch_module
+</ul>
+	</p>
+
+  <h4>#17-IR transmitter</h4>
+    <img src="KY005-IRLED.JPG" alt="IRLED">
+  	<p>
+  	The transmitter is an infrared LED. There is no current
+  	limiting resister on the module, so you should place one
+  	between the (S) signal pin and your source.
+  	</p>
+
+  	<p>
+  	Only 2 pins are used:
+  	<ul>
+  	<li>(-) Ground
+  	<li>(S) Signal (the center pin is not connected.)
+  	</ul>
+  	</p>
+
+  	<p>
+  	When the Signal pin supplies positive
+  	voltage, the Infrared LED will illuminate. Tip: you can verify
+  	operation by viewing the LED through a digital camera or
+  	smartphone camera. CCD cameras are sensitive into the
+  	infrared, and your display should show when the LED is on.
+  	</p>
+  <ul>
+  <li>https://tkkrlab.nl/wiki/Arduino_KY-022_Infrared_sensor_receiver_module
+  </ul>
+
+
+  <h4>#8/9-Passive & Active buzzers</h4>
+  <img src="KY006-PassiveBuzzer.JPG" alt="PassiveBuzzer">
+  <img src="KY012-ActiveBuzzer.JPG" alt="ActiveBuzzer">
+  <p>
+  Use as a speaker, buzzer or other audible indicator.
+  The Active buzzer has a protective tag over the opening, note
+  the + identifies the positive pin of the device, as the rear is
+  covered with epoxy. The active buzzer will generate a tone as
+  soon as power is supplied to the device.
+  </p>
+
+  <p>
+  Passive buzzers must have a modulated signal supplied
+  to the device (like a speaker) and would only generate a
+  "click" if DC voltage is applied.
+  Play a tone or melody using the passive buzzer:
+  <ul>
+    <li>http://osepp.com/learning-centre/start-here/101-basic-starterkit/tutorial-6-using-buzzer-to-play-a-melody/
+    <li>http://www.arduino.cc/en/Tutorial/melody
+    <li>Passive buzzer - https://tkkrlab.nl/wiki/Arduino_KY-006_Small_passive_buzzer_module
+    <li>Active buzzer - https://tkkrlab.nl/wiki/Arduino_KY-012_Active_buzzer_module
+  </ul>
+  </p>
+
+  <h4>Temperature and Humidity sensor</h4>
+  <img src="KY015-TemperatureHumiditySensor.JPG" alt="TemperatureHumiditySensor">
+  <b>Pin connections</b>
+  <ul>
+    <li>(center pin) = +5V
+  	<li>(-) = ground (-) Note the square solder pad.
+  	<li>(S)= Signal (digital, serial output)
+  </ul>
+
+  For the DHT11 library and information, see:
+  <ul>
+  	<li>http://playground.arduino.cc/main/DHT11Lib
+  	<li>http://www.johnboucha.com/arduino-dht11-temperature-humidity/
+  	<li>https://tkkrlab.nl/wiki/Arduino_KY-015_Temperature_and_humidity_sensor_module
+  </ul>
+
+  <h4>Photo Resistor Light Sensor</h4>
+  <img src="KY018-PhotoResistor.JPG" alt="PhotoResistor">
+	<b>Pin connections</b>
+	<ul>
+    <li>+ 5v
+    <li>- Ground
+		<li>Out - Signal (analog voltage level),
+	</ul>
+	Analog signal level will be higher in bright light, lower in
+	darkness.
+
+	<b>Code examples</b>
+	<ul>
+		<li>http://playground.arduino.cc/Learning/PhotoResistor
+		<li>https://tkkrlab.nl/wiki/Arduino_KY-018_Photo_resistor_module
+		<li>http://www.cutedigi.com/articles/sensor-ky018-arduino-sample-code.018_Photo_resistor_module
+	</ul>
+
+  <h4>Flame Sensor (YG1006 or similar)</h4>
+  <img src="KY026-FlameSensor.JPG" alt="FlameSensor">
+  <p>
+  The Flame sensor is a high-speed and highly sensitive NPN
+  Silicon photo transistor based on the YG1006. It can be used
+  to detect fire or other wavelength at 760nm ~ 1100nm light.
+  Response time is 15us, supply voltage is 3.3-5V; output is
+  analog (A0) or digital (D0). To use D0 as a digital trigger input;
+  adjust sensitivity via the screw on the potentiometer.
+  For an Arduino code example, see:
+  https://tkkrlab.nl/wiki/Arduino_KY-026_Flame_sensor_module
+  </p>
+
+  <img src="KY038-Microphone.JPG" alt="Microphone">
+	<h4>Microphone Sound Sensor</h4>
+	<b>Pin connections</b>
+	<ul>
+    <li>+ - connect to 5Vinput
+		<li>G - connect to Ground
+		<li>AO - Analog Out - connect to Arduino for analog
+		<li>DO - Digital Out - Connect to Arduino as digital trigger input; adjust sensitivity via the screw on the potentiometer.
+	</ul>
+	<b>Code examples</b>
+	<ul>
+		<li>https://www.princetronics.com/sound-sensitive-lights-w-sound-sensor-arduino/
+		<li>https://tkkrlab.nl/wiki/Arduino_KY-038_Microphone_sound_sensor_module
+	</ul>
+
+	<h4>#4-LED module - 3W white</h4>
+  <img src="KYXXX-3WWhiteLED.JPG" alt="3WWhiteLED">
+  <b>Pin connections</b>
+	<ul>
+    <li>+ = +5V
+		<li>G = ground
+		<li>S = signal
+	</ul>
+
+	<p>
+	The 3W White LED module uses a surface-mount transistor
+	to control the brightness of the LED while drawing minimal
+	current from the Arduino signal pin output (S).
+	</p>
+
+	<p>
+	The Arduino IDE includes several examples for use with LEDs, see:
+	<ul>
+		<li>File, Examples, 01.Basic, Blink
+		<li>File, Examples, 01.Basic, Fade
+	</ul>
+	</p>
+
+
+
+	<h4>#6-LED - RGB Module</h4>
+	<p>
+	Current-limiting resistors (151 = 1 5 *10 = 150 ohm) are
+	already attached to the positive Red, Green, and Blue pins of
+	the LED. Connect the negative (-) pin to your ground, and the
+	R, G, and B pins to your Arduino output pins.
+	</p>
+	<p>
+	If using PWM (Pulse Width Modulation) capable outputs, you
+	can effectively mix the RGB primary colors to produce
+	thousands or different output colors in the single LED. See:
+	File, Examples, 01.Basic, Fade sketch example in the IDE - http://playground.arduino.cc/Main/RGBLEDPWM
+	</p>
+
+
+
+
+
+	<h4>Light Cup (LED + Mercury Tilt Switch)</h4>
+  <img src="KY017-LightCup.JPG" alt="LightCup">
+	<p>
+	Pin connections
+	<ul>
+    <li>(+) +5V,
+		<li>(G) ground,
+		<li>(S) signal from the mercury switch, and
+		<li>(L) for LED +.
+	</ul>
+	</p>
+
+	<p>
+	You should use a current limiting resistor between the (L) pin and your positive voltage
+	source or Arduino signal pin. The negative pin of the LED connects to the (G) ground.
+	The surface mount resistor (103 = 10K ohms) pulls the signal pin up to +5V. When the mercury shorts the two contacts,
+	the signal pin is pulled to ground
+	</p>
+<ul>
+<li>https://tkkrlab.nl/wiki/Arduino_KY-017_Mercury_open_optical_module
+<li>https://tkkrlab.nl/wiki/Arduino_KY-021_Mini_magnetic_reed_modules
+</ul>
+
+<h4>5V relay module</h4>
+<img src="KY019-5VRelay.JPG" alt="5VRelay">
+<b>Input pins</b>
+<ul>
+  <li>(+) +5V
+  <li>(-) Ground
+  <li>(S) Signal - connect to your Arduino "signal" pin to trip the relay.
+</ul>
+
+<p>
+To use an external 5V source to power the relay coil or servo
+motors, connect the ground of the external source to the
+Arduino ground.
+</p>
+
+<p>
+Three output (screw) pins
+<ul>
+<li>Center is common,
+<li>NC indicates Normally Closed (ON),
+<li>NO indicates Normally Open (OFF).
+</ul>
+
+When relay engages, the NC contact will open, the NO
+contact will close.
+</p>
+
+<ul>
+<li>https://tkkrlab.nl/wiki/Arduino_KY-019_5V_relay_module
+</ul>
+
+
+<h4>Ball tilt sensor</h4>
+<img src="KY021-BallTiltSensor.JPG" alt="BallTiltSensor">
+<p>
+This is a very simple switch with a ball inside of the chamber.
+When the sensor is tipped past the horizontal, the ball will
+touch the top and bottom contacts, closing the switch.
+The surface mount resistor (103 = 10K ohms) pulls the signal
+pin up to +5V. When the contacts close, the signal pin is
+pulled to ground
+</p>
+
+<ul>
+<li>https://tkkrlab.nl/wiki/Arduino_KY-020_Tilt_switch_module
+</ul>
+
+
+<h4>IR receiver (VS1838B or similar)</h4>
+<img src="KY022-IRReceiver.JPG" alt="IRReceiver">
+<p>
+<b>Pin conections</b>
+<ul>
+  <li>Vcc pin to your 5V pin
+  <li>Gnd to a Ground pin
+  <li>The Signal pin connects to an Arduino input pin and will
+  change when the sensor detects an Infrared signal.
+</ul>
+</p>
+
+<p>
+An IR remote control will send coded pulses based on which
+button you press, or an IR LED will produce a continuous
+illumination.
+</p>
+
+<p>
+The surface-mount LED connects to the signal pin of the
+receiver. It will illuminate when the sensor detects an active
+infrared source.
+</p>
+
+
+	<h4>#18-IR Collision Detector</h4>
+  <img src="KY032-IRCollisionDetector.JPG" alt="IRCollisionDetector">
+	<p>
+	Typical use is with robots as collision avoidance detection,
+	but it can also be used to detect a high-contrast mark on a
+	rotating wheel, belt or tank tread (optical encoder).
+	Sensitivity and LED brightness can be adjusted using the
+	two potentiometers on the module.
+	</p>
+
+	<p>
+	The module consists of an infrared LED unit and an infrared
+	detector that can trigger a signal based on the intensity of
+	reflected IR light. Note the heat-shrink tubing over the LED -
+	used to block side-shining IR light from the sensor. Pled =
+	power LED; will illuminate when +5V and ground are
+	connected. Sled = Signal LED; will illuminate if detector is
+	enabled and reflected (or transmitted) IR light is detected.
+	</p>
+
+	<b>Pin connections</b>
+	<ul>
+    <li>(+) +5v
+	  <li>(GND) Ground
+	  <li>(out) Output signal from detector
+	  <li>(EN) Enable External Vcc connection to detector; active if jumper "EN" is removed.
+	</ul>
+
+	Object detection example: http://www.tinkbox.ph/sites/mytinkbox.com/files/downloads/IINFRARED_PROXIMITY_COLLISION_MODULE.pdf
+
+	<h4>#19-IR line follower</h4>
+  <img src="KY033-IRLineFollower.JPG" alt="IRLineFollower">
+	<p>
+	Typical use is with robots for detecting and following a line.
+	Other uses include using the module as an optical encoder
+	to detect revolutions of a wheel or belt, etc. Sensitivity can
+	be adjusted using the potentiometer on the module. The
+	LED is connected to the (S) Signal pin, and illuminates when
+	an IR source (or reflection) is detected.
+	</p>
+
+	<p>
+	The module consists of an infrared LED unit and an infrared
+	detector that can trigger a signal based on the intensity of
+	reflected IR light. Line following robots typically use a
+	minimum of 2 line following sensors to keep the robot
+	"centered" with the line between the two sensors.
+	</p>
+
+	<p>
+	<b>Pin connections</b>
+	<ul>
+    <li>(V+) + 5V
+	  <li>(G) Ground
+	  <li>(S) Signal: low level when detecting reflected IR
+	  <li>light, high when out of range (i.e. edge detection) or low reflectivity (i.e. black tape.)
+	</ul>
+	<ul>
+	</p>
+
+	<p>
+	<b>Code examples</b>
+	<li>Line following robot using 3 line sensor modules: http://adhocnode.com/line-following/
+	<li>Line following example with user-built line sensors: http://www.circuitstoday.com/line-follower-robot-usingarduino
+	</ul>
+	</p>
+
+	<h4>#20-Real time clock modules</h4>
+  <img src="KYXXX-RTCClock.JPG" alt="RTCClock">
+	<p>
+	The Tiny RTC communicates with a microprocessor via the
+	I2C serial interface. The real-time clock/calendar provides
+	seconds, minutes, hours, day, date, month, and year
+	information.
+	</p>
+
+	<p>
+	<b>Pin connections</b>
+	<ul>
+		<li>BAT: Battery voltage monitor (not used)
+		<li>GND: Ground
+		<li>VCC: +5V
+		<li>SDA: I2C data (connect to A4)
+		<li>SCL: I2C clock (connect to A5)
+		<li>DS: DS18B20 Temp. Sensor output (connect to D2)
+		<li>SQ: Square wave output (not used)
+	</ul>
+	</p>
+
+	<p>
+	<b>Library and code examples</b>
+	<ul>
+		<li>http://www.hobbyist.co.nz/?q=real_time_clock
+		<li>http://playground.arduino.cc/code/time
+	</ul>
+	</p>
+
+	<h4>#21-Laser module</h4>
+  <img src="KY008-LaserEmitter.JPG" alt="LaserEmitter">
+	<p>
+	The Laser is a basic 650nm red LED laser that can be used as
+	a light source for a photo resistor module to create a laser
+	"trip wire", or it can be modulated through the (S) signal
+	line to transmit a digital signal. You can also connect this
+	using just the Ground and Signal pin (the center-pin resistor
+	will further limit the current and provide a dimmer output.)
+	</p>
+
+	<p>
+	<b>Pin connections</b>
+	<ul>
+		<li>(S) Signal
+		<li>(center pin) +5V
+		<li>(-) Ground
+	</ul>
+	</p>
+
+	<p>
+	With the ground and +5V pin connected, the laser will
+	illuminate because the resistor between the center pin and
+	(S) signal pin completes the circuit. If a signal is provided
+	(+5V) on the signal pin, the laser remains on, but if the
+	signal pin goes negative (ground), the laser will turn off.
+	</p>
+
+	<b>Code examples</b>
+	<p>
+<ul>
+	<li>https://tkkrlab.nl/wiki/Arduino_KY-008_Laser_sensor_module
+	<li>Laser Tripwire example: http://computers.tutsplus.com/tutorials/how-to-build-a-lasertripwire-with-arduino--cms-21485
+</ul>
+	</p>
+
+	<h4>#22-Linear hall sensor - (SS49E or equivalent Linear Hall Effect Sensor)</h4>
+	<p> The Hall Effect sensor is very sensitive to magnetic fields, and
+	instead of generating just an on/off condition like a reed
+	switch, field strength may be monitored as an analog signal.
+	To use D0 as a digital trigger input; adjust sensitivity via the
+	screw on the potentiometer.
+	</p>
+
+	<p>
+	For typical specifications see:
+	<ul>
+		<li>http://dscl.lcsr.jhu.edu/main/images/3/31/SS49e_Hall_Sensor_Datasheet.pdf
+		<li>http://www.diodes.com/datasheets/AH49E.pdf
+		<li>https://tkkrlab.nl/wiki/Arduino_KY-024_Linear_magnetic_Hall_sensors
+	</ul>
+
+	<b>Code examples</b>
+	<ul>
+		<li>http://playground.arduino.cc/Code/HallEffect
+	</ul>
+
+	<h4>#23-Touch Sensor</h4>
+  <img src="KY003-TouchSensor.JPG" alt="TouchSensor">
+	<p>
+	The tough sensor module uses an MPSA13 (or equivalent)
+	NPN Darlington Transistor. The base of the transistor is left
+	unconnected and wraps around the insulated package to
+	serve as an antenna. When the exposed lead is touched, the
+	module will act like a momentary switch where the signal
+	can be monitored on the D0 pin, adjust sensitivity via the
+	screw on the potentiometer.
+	</p>
+
+	<p>
+	<b>Pin connections</b>
+	<ul>
+		<li>(AO) Analog Output - You could monitor this to detect the gradual change from the transistor as you come near the transistor lead.
+		<li>(G) Ground
+		<li>(+) +5V
+		<li>(DO) Digital Output - this will produce a digital signal similar to a button switch.
+	</ul>
+	</p>
+
+<ul>
+	<li>https://tkkrlab.nl/wiki/Arduino_KY-036_Metal_touch_sensor_module
+</ul>
+
+	#24-Rotary Encoder</h4>
+  <img src="KY040-RotaryEncoder.JPG" alt="RotaryEncoder">
+	<p>
+	The encoder generates two sets of square wave (on/off) pulses from the Clock and Data pins.
+	These can be used to track the rotation of the shaft in either a clockwise or
+	counterclockwise rotation. The encoder also incorporates a momentary push-button switch that is actuated by pressing
+	down on the shaft.
+	</p>
+
+	<p>
+	<b>Pin connections</b>
+	<ul>
+		<li>(CLK) Clock
+		<li>(DT) Data
+		<li>(SW) Button switch
+		<li>(+) +5V
+		<li>(GND) Ground
+	</ul>
+	</p>
+
+	<p>
+	<b>Code examples</b>
+	<ul>
+		<li>http://playground.arduino.cc/Main/RotaryEncoders
+		<li>https://tkkrlab.nl/wiki/Arduino_KY-040_Rotary_encoder_module
+		<li>http://arduinotronics.blogspot.com/2013/09/using-rotaryencoder-with-arduino.html
+	</ul>
+	</p>
+
+<h4>Extra resources</h4>
+Several sites have hook-up and information and code examples on a variety of sensors, similar to, and including the ones
+found in this kit. Some sensors may be loose components or integrated into different board designs. If the documented
+sensor uses the same electronic component, then any code sketch documented may work with the sensors found in
+your kit. However, depending on the circuit design, the adjustments or sensitivity range may need to be modified slightly
+to achieve the desired result. Sites documenting these and other sensors include:
+Arduino Playground Examples and additional libraries (code sketches available from the IDE File, Examples menu):
+http://www.arduino.cc/en/Tutorial/HomePage
+Arduino Playground Tutorials: http://playground.arduino.cc/Learning/Tutorials
+Forum.HobbyComponents.com: http://forum.hobbycomponents.com/viewtopic.php?f=73&t=1320
+LinkSprite Wiki - Advanced Sensors Kit for Arduino: http://linksprite.com/wiki/index.php5?title=Advanced_Sensors_Kit_for_Arduino
+TkkrLab.nl (Tukkerlab)Wiki: https://tkkrlab.nl/wiki/Arduino_37_sensors
+University of Rhode Island (PDF coursework): http://www.ele.uri.edu/courses/ele205/Arduino%20-%20Learning.pdf
+Freeduino.org: http://www.freeduino.org/
+Arduino for Projects (PDF with 1193 projects): http://duino4projects.com/arduino-projects-pdf/
+Lady Ada - Introduction to Arduino- step-by-step lessons: http://www.ladyada.net/learn/arduino/index.html
+Tronixstuf Arduino Tutorials: http://tronixstuff.com/tutorials/
+Earthshine Electronics Beginners Guide to Arduino:
+https://docs.google.com/file/d/0Bw_ruMOtRDDgNXI3OTFGZXhIZ2c/edit?usp=sharing
+Sheepdog's Guide to Arduino Programming: http://sheepdogguides.com/arduino/FA1main.htm
+</div><!-- /.blurb -->
