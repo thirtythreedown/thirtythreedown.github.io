@@ -1,0 +1,185 @@
+---
+layout: default
+title: Thirty Three Down Studio
+---
+<div class="blurb">
+
+<h1>
+  [SOFT] NPR Lunchbox on the Raspberry Pi
+</h1>
+
+<div class="centerimage">
+  <img src="/assets/softlunchboxpi.png" alt="Lunchbox">
+</div>
+
+<p>
+tl;dr: We love NPR's Lunchbox but were frustrated with the instructions on their repository. Here's a step-by-step set of instructions for the Raspberry Pi. We hope it helps.
+</p>
+
+<h3>
+Pi Prep and initial setup
+</h3>
+
+<p>
+First off, let's prep your Raspberry Pi. The Johnson County Library MakerSpace has <a href="http://www.instructables.com/id/Prep-Your-Raspberry-Pi-Like-a-Champ/">a comprehensive guide</a> on how to do that.
+</p>
+
+<p>
+Once your Pi is up to speed, time to install the software we'll need.<br>
+<code>
+  sudo apt-get install htop w3m nginx mysql-server python npm python-pip python-dev build-essential git virtualenv virtualenvwrapper
+</code>
+</p>
+
+<p>
+After all this software installs, we are going to download and install the latest version of nodeJS.<br>
+<code>
+  curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -<br>
+  apt-get install nodejs
+</code>
+</p>
+
+<h3>
+Downloading Lunchbox
+</h3>
+<p>
+Next we download the Lunchbox source code from <a href="https://github.com/nprapps/">NPR's github repository</a>.<br>
+<code>
+  git clone https://github.com/nprapps/lunchbox.git
+</code>
+</p>
+
+<h3>
+Configuring a virtual environment
+</h3>
+<p>
+Now let's create ourselves a virtual environment - and get to work!<br>
+<code>
+  mkvirtualenv lunchbox<br>
+  cd lunchbox<br>
+  pip install -r requirements.txt
+</code>
+</p>
+
+<p>
+This last line will download another bunch of software (Authomatic, Fabric, Flask, etc) to your Raspberry Pi and set it up. It will take a while so be patient!
+</p>
+
+<p>
+Let's also install npm:<br>
+<code>
+  npm install
+</code>
+</p>
+
+<h3>
+Personalizing Lunchbox
+</h3>
+<p>
+Now we can now start personalizing our Lunchbox instance.
+It's important to do this now because Lunchbox will build and spread your settings over several configuration files in the final installation.
+So do it now, so you can forget it later! The <a href="https://github.com/nprapps/lunchbox#configuration">configuration instructions on NPR's repository</a> will walk you through everything you need to do and know.
+</p>
+
+<h3>
+Testing your Lunchbox instance
+</h3>
+All done? Time to build and test your Lunchbox instance.<br>
+<code>
+  fab app
+</code>
+
+
+<p>
+From your Rasperry Pi, use an Internet browser to connect to <code>127.0.0.1:8000</code> and check your install.<br>
+</p>
+
+<h3>
+Rendering and deploying Lunchbox
+</h3>
+<p>
+If everything from themes to logos looks fine, then you're ready for a final render and deployment!<br>
+<code>
+</code>
+</p>
+
+<p>
+First, fill in the server information for the destination server in <code>app_config.py</code>. We used these settings:<br>
+<code>
+  FILE_SERVER_USER = 'pi'<br>
+  FILE_SERVER = '127.0.0.1'<br>
+  FILE_SERVER_PATH = '~/lunchbox-pi'<br>
+</code>
+
+<p>
+The <code>FILE_SERVER_USER</code> is the same as our pi user.<br>
+Since we're deploying directly to our Raspberry Pi, we used <code>127.0.0.1</code> for our <code>FILE_SERVER</code> IP address.<br>
+Finally we set up <code>FILE_SERVER_PATH</code> to deliver to a local folder in the pi user home directory.
+</p>
+
+<p>
+Save your <code>app_config.py</code> file, then turn off your virtual environment for a sec:<br>
+<code>
+  deactivate
+</code>
+</p>
+
+<p>
+Go back to your home directory and create a new folder for the rendered files.<br>
+<code>
+  cd /home/pi<br>
+  mkdir lunchbox-pi
+</code>
+</p>
+
+<p>
+Let's go back to our work directory and restart our virtual environment<br>
+<code>
+  workon lunchbox<br>
+  cd lunchbox
+</code>
+</p>
+
+<p>
+Finally, start the file rendering/deployment script<br>
+<code>
+  fab fileserver master deploy
+</code>
+</p>
+
+<p>
+When prompted, put in the password for your Pi user account. This will take a while!<br>
+
+When done, deactivate your virtual environment for a bit:<br>
+<code>
+  deactivate
+</code>
+</p>
+
+<p>
+Go to the target render folder we created earlier<br>
+<code>
+  cd /home/Pi/lunchbox-pi/lunchbox-test
+</code>
+</p>
+
+<p>
+Our rendered files are waiting neatly in there. We installed an nginx server earlier - you can move all your files in the <code>/www/html/</code> folder to see Lunchbox there.<br>
+<code>
+  sudo mv (instructions)
+</code>
+</p>
+
+<p>
+Or you can just copy everything to a flash drive: the Lunchbox apps can actually work directly from a flash drive or hard drive - this is mostly how we use them.
+</p>
+
+<h3>
+  Resources
+</h3>
+<ul style="list-style-type:circle">
+<li><a href="https://github.com/nprapps/lunchbox">NPR Lunchbox repository</a></li>
+<li><a href="https://blog.apps.npr.org/lunchbox/">Lunchbox on the NPR blog</a></li>
+<li><a href="https://www.raspberrypi.org/documentation/linux/usage/commands.md">Linux commands in Raspbian</a></li>
+</ul>
+</div><!-- /.blurb -->
