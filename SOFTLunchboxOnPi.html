@@ -27,7 +27,7 @@ First off, let's prep your Raspberry Pi. The Johnson County Library MakerSpace h
 <p>
 Once your Pi is up to speed, time to install the software we'll need.<br>
 <code>
-  sudo apt-get install htop w3m nginx mysql-server python npm python-pip python-dev build-essential git virtualenv virtualenvwrapper
+  sudo apt-get install htop w3m nginx mysql-server python python-pip python-dev build-essential git virtualenv virtualenvwrapper
 </code>
 </p>
 
@@ -49,6 +49,10 @@ Next we download the Lunchbox source code from <a href="https://github.com/nprap
 </code>
 </p>
 
+<p>
+  At that point it's a good idea to <b>reboot your Pi</b>, otherwise you might not be able to create your virtual environment with mkvirtualenv in the next step!
+</p>
+
 <h3>
 Configuring a virtual environment
 </h3>
@@ -66,10 +70,23 @@ This last line will download another bunch of software (Authomatic, Fabric, Flas
 </p>
 
 <p>
-Let's also install npm:<br>
+Next, let's install all the dependencies we need!<br>
 <code>
   npm install
 </code>
+Again, this will take a moment.
+</p>
+
+<h3>
+Testing your Lunchbox instance
+</h3>
+All done? Time to build and test your Lunchbox instance. While in your lunchbox instance, type <br>
+<code>
+  fab app
+</code>
+
+<p>
+From your Rasperry Pi, you can use an Internet browser to connect to <code>127.0.0.1:8000</code> and check Luchbox. If everything is working, you can move on to personalizig it!<br>
 </p>
 
 <h3>
@@ -79,19 +96,6 @@ Personalizing Lunchbox
 Now we can now start personalizing our Lunchbox instance.
 It's important to do this now because Lunchbox will build and spread your settings over several configuration files in the final installation.
 So do it now, so you can forget it later! The <a href="https://github.com/nprapps/lunchbox#configuration">configuration instructions on NPR's repository</a> will walk you through everything you need to do and know.
-</p>
-
-<h3>
-Testing your Lunchbox instance
-</h3>
-All done? Time to build and test your Lunchbox instance.<br>
-<code>
-  fab app
-</code>
-
-
-<p>
-From your Rasperry Pi, use an Internet browser to connect to <code>127.0.0.1:8000</code> and check your install.<br>
 </p>
 
 <h3>
