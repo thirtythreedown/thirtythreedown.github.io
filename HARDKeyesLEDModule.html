@@ -8,17 +8,31 @@ title: Thirty Three Down Studio
 
 <img src="HARDInlandSensorKit\KYXXX-3WWhiteLED.JPG" alt="3WWhiteLED"><br>
 <p>
-tl;dr: Em picked up a box of Inland Arduino sensors a while back: they came pretty much without any documentation. She's been doing some research for a while and wanted to share, one module at a time. We hope it helps!
+tl;dr: Em is documenting her way through a box of Arduino modules. We hope it helps.
 </p>
+
+<p>
 <b>Pin connections</b>
 <ul>
   <li>+ goes to your Arduino +5V pin;
   <li>G goes to your Arduino Ground pin;
   <li>S goes to an Arduino digital pin;
 </ul>
+<b>Manufacturer module page</b> - <a href=http://en.keyes-robot.com/productshow.aspx?id=391>http://en.keyes-robot.com/productshow.aspx?id=391</a>
+</p>
 
 <p>
-And that's it! Once wired in, you can use this LED module just like a basic LED - just much <i>much</i> brighter. Don't stare at it directly!<br>
+Once wired and powered, use like a basic LED. Example sketches Blink and Fade work well with it - the module will actually shine nice and bright directly from the Arduino’s 5V pin.
+</p>
+
+<p>
+This LED module packs a serious punch: the box describes it as a 3W LED, which is a simple way to say “don’t stare at it directly in the face or you’ll get light spots in your eyes for a few minutes”. Bee tried, didn’t like it, then found the manufacturer documentation rating this LED module’s light output at anywhere between 180 and 200 lumens.
+</p>
+
+<p>
+Em has been able to power it from a benchtop power supply....Once, then never again. The power supply still works, the power leads still work, the LED module still works - but it just won’t draw power from the supply for some reason!
+</p>
+
 <!-- <ul>
   <li><a href=https://www.arduino.cc/en/Tutorial/Blink>Blink</a>
   <li><a href=https://www.arduino.cc/en/Tutorial/Blink>Blink</a>
