@@ -9,15 +9,14 @@ title: Thirty Three Down Studio
 tl;dr: We've been doing a lot of custom Raspbian images for a lot of projects and needed an easy to shrink them down for storage. This is how we did it.
 </p>
 
-Make a copy of the Raspberry Pi image you want to shrink.<br>
+<b>Making a copy of the Raspberry Pi image you want to shrink.</b>
 <p>
 <b>In Windows</b>, you can use Win32 Disk Imager's READ function instead of the WRITE function you usually use for writing images to your SD card.<br>
 <b>In Linux</b>, you can use <a href=http://www.aoakley.com/articles/2015-10-09-resizing-sd-images.php">Andrew Oaklay's instructions</a>:
 <ul style="list-style-type:circle">
-<li>Install disk tools on your Linux computer - sudo apt-get update && sudo apt-get install dcfldd</li>
-<li>Find out where your SD card has been mounted - df -h</li>
-<li>Unmount your SD card's partitions (it should have two) while leaving the SD card in the reader - sudo umount /dev/partition1 /dev/partition2</li>
-<li>Copy the partitions to a .img file on your computer - sudo dcfldd if=/dev/sdcardmountingpoint of=imagename.img</li>
+<li>Find out where your SD card has been mounted - <code>df -h</code></li>
+<li>Unmount your SD card's partitions (it should have two) while leaving the SD card in the reader - <code>sudo umount /dev/partition1 /dev/partition2</code></li>
+<li>Copy the partitions to a <code>.img</code> file on your computer - <code>sudo dcfldd if=/dev/sdcardmountingpoint of=imagename.img</code></li>
 </ul>
 </p>
 
@@ -25,13 +24,12 @@ Make a copy of the Raspberry Pi image you want to shrink.<br>
 We're doing well! Time to shrink that image using a Linux computer (we use the latest Ubuntu LTS):
 <ul style="list-style-type:circle">
 <li>Download Drewsif's PiShrink script at - <a href="https://github.com/Drewsif/PiShrink">https://github.com/Drewsif/PiShrink</a></li>
-<li>Make the .sh script executable - sudo chmod +x pishrink.sh</li>
-<li>Shrink the .img file you generated earlier - sudo ./pishrink.sh imagefile.img imagefile_shrunk.img</li>
-</ul>
+<li>Make the <code>.sh</code> script executable - <code>sudo chmod +x pishrink.sh</code></li>
+<li>Shrink the <code>.img</code> file you generated earlier - <code>sudo ./pishrink.sh imagefile.img imagefile_shrunk.img</code></li>
 </p>
+</ul>
 
 You're done!
-<br>
 ---
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />We like to share what we do. This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.

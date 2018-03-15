@@ -1,0 +1,91 @@
+---
+layout: default
+title: Thirty Three Down Studio
+---
+<div class="blurb">
+  <h1>[SOFT] Pi Zero Ethernet over USB and connection sharing</h1>
+
+<p>
+tl;dr: We got tired of looking for reference on Pi Zero Ethernet over USB setup and connection sharing all over the place. Here's how to do it step by step in Windows 10.
+</p>
+
+<p>
+<b>Preparing your microSD card</b>
+<ul style="list-style-type:circle">
+<li>Format your microSD card with the <a href="https://www.sdcard.org/downloads/formatter_4/">SD Memory Card Formatter.</a></li>
+<li>Write your Raspbian image of choice to your card - Bee recommends <a href="https://sourceforge.net/projects/win32diskimager/">Win32 Disk Imager</a>.</li>
+</ul>
+</p>
+
+<b>Setting up Ethernet over USB</b>
+<p>
+Once the image has been written to your microSD card, do not eject! Instead:
+<ul style="list-style-type:circle">
+<li>Open it in the File Explorer.</li>
+<li>Open the <code>config.txt</code> with a text editing program that will not mess with the formatting of your file - Em recommends Notepad++.</li>
+<li>Add <code>dtoverlay=dwc2</code> at the start of file (under the first comments will do).</li>
+</ul>
+</p>
+
+<p>
+In command.txt (using the same text editor):
+<ul style="list-style-type:circle">
+<li>Add <code>modules-load=dwc2,g_ether right</code> after between <code>rootwait</code> and <code>quiet</code>.</li>
+<li>Create an empty file named <code>ssh</code> at the root of microSD card to allow SSH connectivity.</li>
+</ul>
+</p>
+
+<b>Optional: installing drivers</b>
+<p>
+On some computers, Ethernet over USB is not recognized correctly. You can fix that!
+<ul>
+<li>Download drivers from <a href="http://domotique.caron.ws/cartes-microcontroleurs/raspberrypi/pi-zero-otg-ethernet/">the Domotronic website</a>.</li>
+<li>Find the failing device in the Control Panel's Device Manager - it is usually listed as a failing USB serial connection peripheral in the Ports list.</li>
+<li>Right-click the failing device to Browse your computer for a driver, and select the drivers you downloaded from Domotronic.</li>
+</ul>
+Your Pi Zero should now be recognized as a USB Ethernet/RNDIS gadget.
+</p>
+
+<b>Sharing your Internet connection</b>
+<p>
+The Pi Zero doesn't have an onboard WiFi chip, but you can share your computer's connection with it.
+<ul>
+<li>Go to Settings > Network adapter settings.</li>
+<li>Left-click to select the Pi Zero connection;</li>
+<li>Keep the Shift key pressed, and left click the connection you want to share with the Pi Zero to select.</li>
+<li>With both connections selected, right-click to open the contextual menu.</li>
+<li>Keep the Shift key pressed, and left click the connection you want to share with the Pi Zero to select.</li>
+<li>Select “Bridge connections”.</li>
+</ul>
+The connection should be live from your Raspberry Pi within minutes.
+</p>
+
+<p>
+You might be tempted to right-click the connection bridge you created and select Disable to stop sharing your connection. Don't: it will actually break your connection to the network. Instead:
+<ul>
+<li>Select both the Pi Zero and Internet connection you are currently sharing.</li>
+<li>Right-click your selections and select “Remove from bridge” from the contextual menu.</li>
+</ul>
+</p>
+
+<p>
+Connect your Pi Zero's data USB port to a USB port on your computer with a mini-USB cable. You can now directly connect to it over SSH with your favorite client, using the <code>raspberrypi.local</code> address.</p>
+
+---
+<br>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />We like to share what we do. This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+
+XOXO, your favorite charlatans.
+
+
+<!-- <ul style="list-style-type:circle">
+<li><a href="">A basic list</a></li>
+</ul>
+
+<h2>Extra resources</h2>
+<ul style="list-style-type:circle">
+<li><a href="">Another</a></li>
+<li><a href="">Basic</a></li>
+<li><a href="">List</a></li>
+</ul> -->
+</div><!-- /.blurb -->
