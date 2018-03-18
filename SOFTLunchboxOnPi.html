@@ -13,173 +13,94 @@ title: Thirty Three Down Studio
 </div>
 
 <p>
-tl;dr: We love NPR's Lunchbox but were frustrated with the instructions on their repository. Here's a step-by-step set of instructions for the Raspberry Pi. We hope it helps.
+tl;dr: We love NPR's Lunchbox but were frustrated with the instructions on the repository. Here's a step-by-step set of instructions for the Raspberry Pi. We hope it helps you deploy this great tool.
 </p>
 
-<h3>
-Pi Prep and initial setup
-</h3>
+<h2>Raspberry Pi setup</h2>
 
 <p>
 First off, let's prep your Raspberry Pi. The Johnson County Library MakerSpace has <a href="http://www.instructables.com/id/Prep-Your-Raspberry-Pi-Like-a-Champ/">a comprehensive guide</a> on how to do that.
 </p>
 
-<p>
-Once your Pi is up to speed, time to install the software we'll need.<br>
-<code>
-  sudo apt-get install htop w3m nginx mysql-server python python-pip python-dev build-essential git virtualenv virtualenvwrapper
-</code>
+<ul style="list-style-type:circle">
+<li>Install the nginx and mysql servers - <code>sudo apt-get install nginx mysql-server </code></li>
+<li>Install programming and development tools - <code>sudo apt-get install python python-pip python-dev build-essential git virtualenv virtualenvwrapper</code></li>
+<li>Install the NodeJS repository - <code>curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -<br></code></li>
+<li>Install NodeJS and npm - <code> sudo apt-get install nodejs</code></li>
+</ul>
 </p>
 
+<h2>Downloading Lunchbox</h2>
 <p>
-After all this software installs, we are going to download and install the latest version of nodeJS.<br>
-<code>
-  curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -<br>
-  apt-get install nodejs
-</code>
-</p>
-
-<h3>
-Downloading Lunchbox
-</h3>
-<p>
-Next we download the Lunchbox source code from <a href="https://github.com/nprapps/">NPR's github repository</a>.<br>
-<code>
+<ul style="list-style-type:circle">
+<li>Download the Lunchbox source code from <a href="https://github.com/nprapps/">NPR's github repository</a> - <code>
   git clone https://github.com/nprapps/lunchbox.git
-</code>
+</code></li>
+<li>Reboot your Raspberry Pi.
+</code></li>
+</ul>
+</p>
+
+<h2>Configuring a virtual environment</h2>
+<p>
+<ul style="list-style-type:circle">
+<li>Create a virtual environment to work in - <code>mkvirtualenv lunchbox</code></li>
+<li>Move to the Lunchbox folder - <code>cd lunchbox</code></li>
+<li>Install the software using the script in the Lunchbox folder (it will take a while, be patient) - <code>pip install -r requirements.txt</code></li>
+<li>Install the software dependencies Lunchbox needs (once again, be patient) - <code>npm install</code></li>
+</ul>
+</p>
+
+<h2>Testing your Lunchbox instance</h2>
+All done? Time to build and test your Lunchbox instance. While in your lunchbox virtual environment, type <code>fab app</code> to generate a temporary version of Lunchbox for review.
+
+<p>
+From your Rasperry Pi, you can use an Web browser to connect to the local server at <code>127.0.0.1:8000</code> to check Lunchbox. If everything looks like it's working, you can move on to personalizing Lunchbox for your org.<br>
+</p>
+
+<h2>Personalizing Lunchbox</h2>
+<p>
+It's important to personalize Lunchbox before building it and hosting it on your server: settings are spread over several configuration files in the final installation, so doing it now will save you a lot of time. The <a href="https://github.com/nprapps/lunchbox#configuration">configuration instructions for logos, URLS and contact information on NPR's repository</a> will walk you through everything you need to do.
+</p>
+<p>
+Next, fill in the server information for the destination server in <code>app_config.py</code>. We used the following settings:
+<ul style="list-style-type:circle">
+<li>The <code>FILE_SERVER_USER</code> is the same as our <code>pi</code> user - <code>FILE_SERVER_USER = 'pi'</code></li>
+<li>Since we're deploying directly to our Raspberry Pi, we use our local address - <code>FILE_SERVER = '127.0.0.1'</code></li>
+<li>We set up the script to render to a local folder in our user's home directory - <code>FILE_SERVER_PATH = '~/lunchbox-pi'</code></li>
+</ul>
+
+<h2>Rendering Lunchbox locally</h2>
+<p>
+If everything looks fine, you're ready for the final render and deployment.<br>
+<ul style="list-style-type:circle">
+<li>Save your <code>app_config.py</code> file then turn off your virtual environment - <code>deactivate</code></li>
+<li>Go back to your pi user home directory - <code>cd /home/pi</code></li>
+<li>Create the target folder for the rendered Lunchbox files. - <code>mkdir lunchbox-pi</code></li>
+<li>Restart your virtual environment - <code>workon lunchbox</code></li>
+<li>Go back to your work directory - <code>cd lunchbox</code></li>
+<li>Finally, start the file rendering/deployment script - <code>fab fileserver master deploy</code>
+<li>When prompted, accept connection to host <code>127.0.0.1</code> and type in the password for your Pi user account.</li>
+<li>When rendering is over, deactivate your virtual environment - <code>deactivate</code>
+<li>Go to the target folder where the files have been rendered (lunchbox-test if you haven't changed the <code>PROJECT_SLUG</code> name in <code>app_config.py</code> - <code>cd /home/pi/lunchbox-pi/lunchbox-test/</code>
+<li>Copy all the files to nginx's <code>/var/www/html/</code> folder to use your customized Lunchbox - <code>sudo cp -a /home/pi/lunchbox-pi/lunchbox-test/. /var/www/html/</code></li>
+</ul>
 </p>
 
 <p>
-  At that point it's a good idea to <b>reboot your Pi</b>, otherwise you might not be able to create your virtual environment with mkvirtualenv in the next step!
+You can visit your rendered Lunchbox installation from a browser on your Raspberry Pi at <code>http://127.0.0.1/index.html</code>.
 </p>
 
-<h3>
-Configuring a virtual environment
-</h3>
-<p>
-Now let's create ourselves a virtual environment - and get to work!<br>
-<code>
-  mkvirtualenv lunchbox<br>
-  cd lunchbox<br>
-  pip install -r requirements.txt
-</code>
-</p>
-
-<p>
-This last line will download another bunch of software (Authomatic, Fabric, Flask, etc) to your Raspberry Pi and set it up. It will take a while so be patient!
-</p>
-
-<p>
-Next, let's install all the dependencies we need!<br>
-<code>
-  npm install
-</code>
-Again, this will take a moment.
-</p>
-
-<h3>
-Testing your Lunchbox instance
-</h3>
-All done? Time to build and test your Lunchbox instance. While in your lunchbox instance, type <br>
-<code>
-  fab app
-</code>
-
-<p>
-From your Rasperry Pi, you can use an Internet browser to connect to <code>127.0.0.1:8000</code> and check Luchbox. If everything is working, you can move on to personalizig it!<br>
-</p>
-
-<h3>
-Personalizing Lunchbox
-</h3>
-<p>
-Now we can now start personalizing our Lunchbox instance.
-It's important to do this now because Lunchbox will build and spread your settings over several configuration files in the final installation.
-So do it now, so you can forget it later! The <a href="https://github.com/nprapps/lunchbox#configuration">configuration instructions on NPR's repository</a> will walk you through everything you need to do and know.
-</p>
-
-<h3>
-Rendering and deploying Lunchbox
-</h3>
-<p>
-If everything from themes to logos looks fine, then you're ready for a final render and deployment!<br>
-<code>
-</code>
-</p>
-
-<p>
-First, fill in the server information for the destination server in <code>app_config.py</code>. We used these settings:<br>
-<code>
-  FILE_SERVER_USER = 'pi'<br>
-  FILE_SERVER = '127.0.0.1'<br>
-  FILE_SERVER_PATH = '~/lunchbox-pi'<br>
-</code>
-
-<p>
-The <code>FILE_SERVER_USER</code> is the same as our pi user.<br>
-Since we're deploying directly to our Raspberry Pi, we used <code>127.0.0.1</code> for our <code>FILE_SERVER</code> IP address.<br>
-Finally we set up <code>FILE_SERVER_PATH</code> to deliver to a local folder in the pi user home directory.
-</p>
-
-<p>
-Save your <code>app_config.py</code> file, then turn off your virtual environment for a sec:<br>
-<code>
-  deactivate
-</code>
-</p>
-
-<p>
-Go back to your home directory and create a new folder for the rendered files.<br>
-<code>
-  cd /home/pi<br>
-  mkdir lunchbox-pi
-</code>
-</p>
-
-<p>
-Let's go back to our work directory and restart our virtual environment<br>
-<code>
-  workon lunchbox<br>
-  cd lunchbox
-</code>
-</p>
-
-<p>
-Finally, start the file rendering/deployment script<br>
-<code>
-  fab fileserver master deploy
-</code>
-</p>
-
-<p>
-When prompted, put in the password for your Pi user account. This will take a while!<br>
-
-When done, deactivate your virtual environment for a bit:<br>
-<code>
-  deactivate
-</code>
-</p>
-
-<p>
-Go to the target render folder we created earlier<br>
-<code>
-  cd /home/Pi/lunchbox-pi/lunchbox-test
-</code>
-</p>
-
-<p>
-Our rendered files are waiting neatly in there. We installed an nginx server earlier - you can move all your files in the <code>/www/html/</code> folder to see Lunchbox there!<br>
-</p>
-
-<h3>
-  Resources
-</h3>
+<h3>Extra Resources</h3>
 <ul style="list-style-type:circle">
 <li><a href="https://github.com/nprapps/lunchbox">NPR Lunchbox repository</a></li>
 <li><a href="https://blog.apps.npr.org/lunchbox/">Lunchbox on the NPR blog</a></li>
 <li><a href="https://www.raspberrypi.org/documentation/linux/usage/commands.md">Linux commands in Raspbian</a></li>
 </ul>
+<br>
 ---
 <br>
-<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />We like to share what we do. This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />We like to share what we do. This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.<br>
+<br>
+XOXO, your favorite charlatans.
 </div><!-- /.blurb -->
