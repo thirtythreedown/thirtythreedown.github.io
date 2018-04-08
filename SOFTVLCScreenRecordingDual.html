@@ -1,0 +1,78 @@
+---
+layout: default
+title: Thirty Three Down Studio
+---
+<div class="blurb">
+  <h1>[SOFT] VLC screen recording - dual screen edition</h1>
+
+<p>
+tl;dr: We have an operational budget of about 75 dollars and will not invest into capture hardware anytime soon. Free, open source VLC software to the rescue.
+</p>
+
+<p>
+We are broke as eff and June and Bee have been looking to document our development work without breaking the bank. They eventually stopped refreshing ShopGoodwill every five minutes and went to VLC Media Player instead.
+</p>
+
+<h2>Knowing our setup</h2>
+<p>
+Before recording, you need toknow the resolution of each screen and their position in your operating system. We'll use June's dual screen setup as an example. She has:
+<ul>
+<li>A 1600x900 laptop screen to her left.</li>
+<li>A 1920x1080 desktop screen to her right.</li>
+</ul>
+
+<b>Setting up VLC - right screen recording </b>
+<p>If June wants to record her desktop screen, she will:
+<ul style="list-style-type:circle">
+<li>Open VLC.</li>
+<li>Click Media > Convert/Save to open the recording menu.</li>
+<li>In the Capture device tab, select Desktop from the Capture mode drop-dowm menu.</li>
+<li>In the Desired frame rate menu, type in your frame rate (she usually goes for 30fps).</li>
+<li>Check Show more options to open more options (yup).</li>
+<li>Add <code>:screen-left=1600</code> at the end of the Edit Options field.
+<li>Finally, click Convert/Save - you are done with the first step!</li>
+</ul>
+
+<b>Setting up VLC - left screen recording</b>
+<p>If June wants to record her laptop screen, she will:
+<ul style="list-style-type:circle">
+<li>Open VLC.</li>
+<li>Click Media > Convert/Save to open the recording menu.</li>
+<li>In the Capture device tab, select Desktop from the Capture mode drop-dowm menu.</li>
+<li>In the Desired frame rate menu, type in your frame rate (she usually goes for 30fps).</li>
+<li>Check Show more options to open more options (yup).</li>
+<li>Add<code>:screen-left=0 :screen-width= 1600 :screen-height=900</code> at the end of the Edit Options field.
+<li>Finally, click Convert/Save - you are done with the first step!</li>
+</ul>
+
+<b>Setting up VLC output</b>
+<ul style="list-style-type:circle">
+<li>In the Convert screen, choose a profile from the drop down menu - we usually go for Video - H.264 + MP3 (MP4).</li>
+<li>Click on the Settings icon next to the drop-down menu to open the Profile edition screen.</li>
+<li>In the Encapsulation tab, we usually leave eveything alone.</li>
+<li>In the Video Codec tab, change the Frame size in the Video codec options to match the resolution of the screen you'll be recording.
+<li>In the Audio Codec tab, we usually uncheck Audio because we love the sound of silence. Also we're done editing the Profile - click Save.</li>
+<li>Back on the Convert screen, click Browse to choose a destination for your capture - let's say example.mp4 on your desktop.</li>
+<li>Finally, click Start to start recording.</li>
+</ul>
+
+<p>
+Nothing <i>seems</i> to happen but VLC should already be recording and you should have a example.mp4 file on your desktop. Everything happening on the target screen is being captured by VLC. On your desktop, you will find a new file with the name you provided earlier: as soon as you click Stop in VLC to stop capturing, the file will finish processing and update with a thumbnail picture of the contents you captured. It's ready to play!
+</p>
+
+<p>
+You can do a lot more with VLC Media Player and we have only grazed the surface. There is a ton to explore here, check the resources below for more.
+</p>
+
+<h2>Extra resources</h2>
+<ul style="list-style-type:circle">
+<li><a href="https://wiki.videolan.org/Documentation:Streaming_HowTo/Easy_Streaming/">Streaming howto/Easy streaming on Videolan.org</a></li>
+<li><a href="http://www.instructables.com/id/How-to-Record-Your-Screen-With-VLC-Media-Player/">How to record your screen with VLC Media Player by paasadani</a></li>
+</ul>
+<br>
+---
+<br>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />We like to share what we do. This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.<br>
+<br>
+XOXO, your friendly neighborhood charlatans.
+</div><!-- /.blurb -->
