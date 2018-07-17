@@ -14,9 +14,9 @@ tl;dr: When you shrink your Raspbian images for storage, make sure to fold them 
 In Windows, you can use Win32 Disk Imager's READ function instead of the WRITE function you usually use for writing images to your SD card.<br>
 In Linux, you can use <a href="http://www.aoakley.com/articles/2015-10-09-resizing-sd-images.php">Andrew Oaklay's instructions</a>:
 <ul style="list-style-type:circle">
-<li>Find out where your SD card has been mounted - <code>df -h</code></li>
-<li>Unmount your SD card's partitions (it should have two) while leaving the SD card in the reader - <code>sudo umount /dev/partition1 /dev/partition2</code></li>
-<li>Copy the partitions to a <code>.img</code> file on your computer - <code>sudo dcfldd if=/dev/sdcardmountingpoint of=imagename.img</code></li>
+<li>Find out where your SD card has been mounted - <code>df -h</code>.</li>
+<li>Unmount your SD card's partitions (it should have two) while leaving the SD card in the reader - <code>sudo umount /dev/partition1 /dev/partition2</code>.</li>
+<li>Copy the partitions to a <code>.img</code> file on your computer - <code>sudo dcfldd if=/dev/sdcardmountingpoint of=imagename.img</code>.</li>
 </ul>
 </p>
 
@@ -24,9 +24,9 @@ In Linux, you can use <a href="http://www.aoakley.com/articles/2015-10-09-resizi
 <p>
 We're doing well! Time to shrink that image using a Linux computer (we use the latest Ubuntu LTS):
 <ul style="list-style-type:circle">
-<li>Download <a href="https://github.com/Drewsif/PiShrink">Drewsif's PiShrink script</a></li>
-<li>Make the <code>.sh</code> script executable - <code>sudo chmod +x pishrink.sh</code></li>
-<li>Shrink the <code>.img</code> file you generated earlier - <code>sudo ./pishrink.sh imagefile.img imagefile_shrunk.img</code></li>
+<li>Download <a href="https://github.com/Drewsif/PiShrink">Drewsif's PiShrink script</a>.</li>
+<li>Make the <code>.sh</code> script executable - <code>sudo chmod +x pishrink.sh</code>.</li>
+<li>Shrink the <code>.img</code> file you generated earlier - <code>sudo ./pishrink.sh imagefile.img imagefile_shrunk.img</code>.</li>
 </ul>
 </p>
 You're done!

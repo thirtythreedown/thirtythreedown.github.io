@@ -77,16 +77,16 @@ Next, fill in the server information for the destination server in <code>app_con
 <p>
 If everything looks fine, you're ready for the final render and deployment.<br>
 <ul style="list-style-type:circle">
-<li>Save your <code>app_config.py</code> file then turn off your virtual environment - <code>deactivate</code></li>
-<li>Go back to your pi user home directory - <code>cd /home/pi</code></li>
-<li>Create the target folder for the rendered Lunchbox files. - <code>mkdir lunchbox-pi</code></li>
-<li>Restart your virtual environment - <code>workon lunchbox</code></li>
-<li>Go back to your work directory - <code>cd lunchbox</code></li>
-<li>Finally, start the file rendering/deployment script - <code>fab fileserver master deploy</code>
+<li>Save your <code>app_config.py</code> file then turn off your virtual environment - <code>deactivate</code>.</li>
+<li>Go back to your pi user home directory - <code>cd /home/pi</code>.</li>
+<li>Create the target folder for the rendered Lunchbox files. - <code>mkdir lunchbox-pi</code>.</li>
+<li>Restart your virtual environment - <code>workon lunchbox</code>.</li>
+<li>Go back to your work directory - <code>cd lunchbox</code>.</li>
+<li>Finally, start the file rendering/deployment script - <code>fab fileserver master deploy</code>.</li>
 <li>When prompted, accept connection to host <code>127.0.0.1</code> and type in the password for your Pi user account.</li>
-<li>When rendering is over, deactivate your virtual environment - <code>deactivate</code>
-<li>Go to the target folder where the files have been rendered (lunchbox-test if you haven't changed the <code>PROJECT_SLUG</code> name in <code>app_config.py</code> - <code>cd /home/pi/lunchbox-pi/lunchbox-test/</code>
-<li>Copy all the files to nginx's <code>/var/www/html/</code> folder to use your customized Lunchbox - <code>sudo cp -a /home/pi/lunchbox-pi/lunchbox-test/. /var/www/html/</code></li>
+<li>When rendering is over, deactivate your virtual environment - <code>deactivate</code>.<li>
+<li>Go to the target folder where the files have been rendered (lunchbox-test if you haven't changed the <code>PROJECT_SLUG</code> name in <code>app_config.py</code> - <code>cd /home/pi/lunchbox-pi/lunchbox-test/</code>.</li>
+<li>Copy all the files to nginx's <code>/var/www/html/</code> folder to use your customized Lunchbox - <code>sudo cp -a /home/pi/lunchbox-pi/lunchbox-test/. /var/www/html/</code>.</li>
 </ul>
 </p>
 
@@ -96,8 +96,8 @@ You can visit your rendered Lunchbox installation from a browser on your Raspber
 
 <h3>Extra Resources</h3>
 <ul style="list-style-type:circle">
-<li><a href="https://github.com/nprapps/lunchbox">NPR Lunchbox repository</a></li>
-<li><a href="https://blog.apps.npr.org/lunchbox/">Lunchbox on the NPR blog</a></li>
-<li><a href="https://www.raspberrypi.org/documentation/linux/usage/commands.md">Linux commands in Raspbian</a></li>
+<li><a href="https://github.com/nprapps/lunchbox">NPR Lunchbox repository</a>.</li>
+<li><a href="https://blog.apps.npr.org/lunchbox/">Lunchbox on the NPR blog</a>.</li>
+<li><a href="https://www.raspberrypi.org/documentation/linux/usage/commands.md">Linux commands in Raspbian</a>.</li>
 </ul>
 </div><!-- /.blurb -->

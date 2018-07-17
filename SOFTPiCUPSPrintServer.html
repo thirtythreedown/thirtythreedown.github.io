@@ -1,0 +1,50 @@
+---
+layout: default
+title: Thirty Three Down Studio
+---
+<div class="blurb">
+<h1>[SOFT] Raspberry Pi CUPS print server</h1>
+
+<p>
+tl;dr: We needed a print server for our old WiFi-challenged printer. Here's how we did it.
+</p>
+
+<h2>Installing the CUPS printing server</h2>
+We'll be using the Terminal for the following commands:
+<ul style="list-style-type:circle">
+<li>Install CUPS - <code>sudo apt-get install cups</code>.</li>
+<li>Add the <code>pi</code> user to admin list for CUPS - <code>sudo usermod -a -G lpadmin pi</code>.</li>
+<li>Run CUPS as a service on startup <i>if your network is trustworthy</i> - <code>sudo cupsctl --remote-any</code>.</li>
+<li>If you’re using a HP printer like we do - <code>sudo apt-get install hplip</code>.</li>
+<li>And restart the CUPS server - <code>sudo /etc/init.d/cups restart</code>.</li>
+</ul>
+
+<p>
+Finally, restart the Raspberry Pi, then access the CUPS management interface from your browser at <code>http://[RaspberryPiIPaddress]:631/</code>.
+</p>
+
+<h2>Installing the network printer on your computer</h2>
+Download the appropriate .ppd file from the printer manufacturer:
+<ul style="list-style-type:circle">
+<li>For HP printers, from https://developers.hp.com/hp-linux-imaging-and-printing/gethplip.</li>
+<li>For other manufacturers, in general - http://www.openprinting.org/drivers.</li>
+</ul>
+
+<p>
+Provide the path to the .ppd file you downloaded earlier when you are adding the new printer. After setting up, you should be able to detect the printer directly from Windows. If you can’t:
+<ul style="list-style-type:circle">
+<li>Go to the printer page in CUPS.</li>
+<li>Copy the URL of the printer page on the print server page, in the Printers tab.</li>
+<li>Look for a new printer in Windows, and choose option “The printer I want isn’t listed” then “Select a shared printer by name”.</li>
+<li>Paste the URL we copied from CUPS - Make sure the address starts with <code>http:</code></li>
+<li>Pick the correct driver from the list Windows offers, or download the driver.</li>
+<li>Finish the process, print a test page if needed.</li>
+</ul>
+</p>
+
+<h2>Extra resources</h2>
+<ul style="list-style-type:circle">
+<li>This guide is adapted from Raspberry Pi Geek’s in-depth artile <a href="http://www.raspberry-pi-geek.com/Archive/2013/01/Converting-the-Raspberry-Pi-to-a-wireless-print-server">Converting the Raspberry Pi to a wireless print server</a></li>
+<li><a href="https://www.cups.org/">CUPS printing system website</a></li>
+</ul>
+</div><!-- /.blurb -->
