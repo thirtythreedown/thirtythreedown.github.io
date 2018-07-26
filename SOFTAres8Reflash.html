@@ -1,0 +1,75 @@
+---
+layout: default
+title: Thirty Three Down Studio
+---
+<div class="blurb">
+  <h1>[SOFT] Reflashing the Nextbook Ares 8 tablet</h1>
+
+<p>
+tl;dr: One day our Nextbook Ares 8 tablets simply stopped working. This is how we fixed them.
+</p>
+
+<p>
+The Nextbook Ares 8 tablet is a great device for its price range. In 2018, it makes for a near-unbeatable ebooks reader: we use them for technical documentation and library access. Ours stopped working and based on XDA Forums cries for help, so did a lot of people. This is how we fixed them using resources out there and a Windows computer.</p>
+
+<p>
+<b>WARNING: Please note that all your data on the device will be wiped, and encryption will be disabled. We are NOT responsible for any damage to your tablet, your computer or any hardware involved in this tutorial.</b>
+</p>
+
+<p>
+Huge thanks go to  XDA Forums users @vampirefo, @socialdesignconcepts and @greatbal for all their work on these machines.
+</p>
+
+<h2>Downloading and installing all the things</h2>
+<ul style="list-style-type:circle">
+<li>Download and install the <a href="https://androidmtk.com/download-manufacturing-flash-tool">Intel Manufacturing Flash tool</a> and the iSOC and ADB driver.</li>
+<li>Follow the instructions to install <a href="https://forum.xda-developers.com/android/software/guide-how-to-set-fastboot-adb-to-wide-t3591240">the ADB and Fastboot</a> tools systemwide.</li>
+<li>Charge your tablet.</li>
+<li>Download the Ares8_resize_partitions from <a href="https://forum.xda-developers.com/android/development/partition-ares-8-tablet-linux-windows-t3327595">Vampirefo's Partition Ares 8 Tablet Linux and Windows script thread</a>.</li>
+<li>Extract the ZIP archive to your computer.</li>
+</ul>
+
+<h2>Reflashing the EFI file and bootloader</h2>
+<ul style="list-style-type:circle">
+<li>Open the unzipped folder.</li>
+<li>Open the Windows Command Prompt terminal and go to the unzipped folder.</li>
+<li>Keep both VOLUME DOWN and VOLUME UP buttons pressed as you turn on the tablet. It should boot to a black screen reading <code>Entering DNX mode. Waiting for fastboot command...</code>.</li>
+<li>Connect your tablet to your computer with a USB cable.</li>
+<li>From your terminal, type <code>fastboot flash osloader efilinux.efi</code>. Wait for the command to finish with an <code>OKAY</code> message on your screen.</li>
+<li>From your terminal, type <code>fastboot boot droidboot.img</code>. Wait for the command to finish with an <code>OKAY</code> message on your screen.</li>
+<li>Turn off your tablet.</li>
+<li>Keep VOLUME DOWN pressed as you turn on the tablet. It should boot into the Android bootloader (with the Android robot lying on its back).</li>
+Pat yourself on the back - you finished the first big step!</li>
+</ul>
+
+<h2>Repartitioning the tablet</h2>
+<ul style="list-style-type:circle">
+<li>Open the unzipped folder.</li>
+<li>In the Ares8_resize_partition folder, edit the <code>fastboot_cmd.bat</code> file to read the all the fastboot commands.</li>
+<li>Type in in all the commands, one at a time Some of them will take time: give them time to finish with an <code>OKAY</code> message.</li>
+<li>Connect your tablet to your computer with a USB cable.</li>
+<li>When you get to commands involving <code>partition.tbl</code>, replace it with <code>stockpartition.tbl</code> instead.</li>
+<li>Type in the rest of the commands normally, always waiting for <code>OKAY</code>.</li>
+<li>Finally, use the VOLUME DOWN button to select RECOVERY MODE and use the POWER button to restart.</li>
+The tablet will now reboot into the TWRP recovery. If everything works well, turn it off.
+</ul>
+
+<h2>Reflashing the system</h2>
+<ul style="list-style-type:circle">
+<li>Download the <code>Ares8_stock_rom.zip</code> file from the <a href="https://forum.xda-developers.com/android/development/partition-ares-8-tablet-linux-windows-t3327595">Partition Ares 8 Tablet Linux and Windows script</a>.</li>
+<li>Copy the Ares8_stock_rom.zip file on a MicroSD card and put it into your tablet.</li>
+<li>Keep the VOLUME UP button pressd as you turn on your tablet to boot into TWRP recovery.</li>
+<li>Go to INSTALL.</li>
+<li>Select STORAGE, then MicroSD card.</li>
+<li>Select the <code>Ares8_stock_rom.zip</code> file. Un-check the MD5 verifications option.</li>
+<li>Swipe to confirm Flash. You night get a warning about a missing partition path for /sdcard, but it shouldn’t be a problem.</li>
+<li>Swipe to confirm Flash. You night get a warning about a missing partition path for /sdcard, but it shouldn’t be a problem. The flashing will take a while - about 20 minutes on the tablets we restored. Do not interrupt it! If the screen goes to sleep, you can wake it up with a quick press on the POWER button.</li>
+<li>When the TWRP Recovery prompts you to wipe cache and DALVIK, swipe right to accept.</li>
+<li>Finally, reboot the tablet.</li>
+</ul>
+
+<p>
+The first boot will take at least 5 minutes, then walk you through the original setup for the tablet. Set up time zone, date and time and enjoy your reflashed tablet!
+</p>
+
+</div><!-- /.blurb -->
