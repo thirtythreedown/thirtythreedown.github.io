@@ -29,7 +29,7 @@ Let's start by installing all the software you will need on your computer.
 <li>Download and install the <a href="https://androidmtk.com/download-manufacturing-flash-tool">Intel Manufacturing Flash tool</a> and the iSOC and ADB driver.</li>
 <li>Follow the instructions to install <a href="https://forum.xda-developers.com/android/software/guide-how-to-set-fastboot-adb-to-wide-t3591240">the ADB and Fastboot</a> tools systemwide.</li>
 <li>Charge your tablet.</li>
-<li>Download <code>Ares8_resize_partitions.zip</code> from <a href="https://forum.xda-developers.com/android/development/partition-ares-8-tablet-linux-windows-t3327595">Vampirefo's Partition Ares 8 Tablet Linux and Windows script thread</a>.</li>
+<li>Download the <code>Ares8_resize_partions.zip</code> files from <a href="https://forum.xda-developers.com/android/development/partition-ares-8-tablet-linux-windows-t3327595">Vampirefo's Partition Ares 8 Tablet Linux and Windows script thread</a>.</li>
 <li>Extract the ZIP archive to your computer.</li>
 </ul>
 
@@ -37,14 +37,20 @@ Let's start by installing all the software you will need on your computer.
 Everything should be ready. We can now start reflashing your tablet.
 </p>
 
-<h2>Reflashing the EFI file and bootloader</h2>
+<h2>Reflashing the .EFI file</h2>
 <ul style="list-style-type:circle">
-<li>Open the unzipped folder.</li>
-<li>Open the Windows Command Prompt terminal and go to the unzipped folder.</li>
+<li>Open the unzipped <code>ares8_resize_partions.zip</code> folder.</li>
+<li>In the unzipped folder, extract the <code>esp.zip</code> archive.</li>
+<li>Open the Windows Command Prompt terminal and go to the unzipped <code>esp</code> folder using the <code>cd</code> command, all the way to the <code>\EFI\Intel\</code> folder, where you will find the <code>efilinux.efi</code>.</li>
 <li>Keep both VOLUME DOWN and VOLUME UP buttons pressed as you turn on the tablet. It should boot to a black screen reading <code>Entering DNX mode. Waiting for fastboot command...</code>.</li>
 <li>Connect your tablet to your computer with a USB cable.</li>
 <li>From your terminal, type <code>fastboot flash osloader efilinux.efi</code>. Wait for the command to finish with an <code>OKAY</code> message on your screen.</li>
-<li>From your terminal, type <code>fastboot boot droidboot.img</code>. Wait for the command to finish with an <code>OKAY</code> message on your screen.</li>
+</ul>
+
+<h2>Reflashing the bootloader</h2>
+<ul style="list-style-type:circle">
+<li>Use the <code>cd</code> command in your terminal to navigate back to the unzipped <code>Ares8_resize_partitions</code> folder.</li>
+<li>Type <code>fastboot boot droidboot.img</code>. Wait for the command to finish with an <code>OKAY</code> message on your screen.</li>
 <li>Turn off your tablet.</li>
 <li>Keep VOLUME DOWN pressed as you turn on the tablet. It should boot into the Android bootloader (with the Android robot lying on its back).</li>
 </ul>
@@ -55,11 +61,11 @@ Pat yourself on the back - you finished the first big step! Next up is rebuildin
 
 <h2>Repartitioning and reflashing</h2>
 <ul style="list-style-type:circle">
-<li>Open the unzipped folder.</li>
-<li>In the Ares8_resize_partition folder, edit the <code>fastboot_cmd.bat</code> file to read the all the fastboot commands.</li>
-<li>Fron the Windows Command Prompt terminal, type in all the commands, one at a time. Some of them will take time: be patient and let them finish with an <code>OKAY</code> message.</li>
-<li>When you get to commands involving <code>partition.tbl</code>, replace it with <code>stockpartition.tbl</code> instead.</li>
-<li>Type in the rest of the commands normally, always waiting for <code>OKAY</code>.</li>
+<li>Browse to the unzipped Ares8_resize_partition folder.</li>
+<li>In the folder, edit the <code>fastboot_cmd.bat</code> file to read all the fastboot commands.</li>
+<li>From the terminal, type in all the commands, one at a time. Some of them will take time: be patient and let them finish with an <code>OKAY</code> message.</li>
+<li>When you get to commands involving <code>partition.tbl</code>, replace the file name with <code>stockpartition.tbl</code> instead.</li>
+<li>Type in the rest of the commands normally in the terminal, always waiting for <code>OKAY</code>.</li>
 <li>Finally, use the VOLUME DOWN button to select RECOVERY MODE and use the POWER button to restart.</li>
 </ul>
 
