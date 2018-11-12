@@ -6,19 +6,32 @@ title: Thirty Three Down Studio
   <h1>[SOFT] VLC screen recording - dual screen edition</h1>
 
 <p>
-tl;dr: This is a set of instructions to capture your computer screen with VLC.
+tl;dr: A set of instructions to capture your computer screens with VLC.
 </p>
 
 <h2>Knowing your setup</h2>
 <p>
-Before recording, you need to know the resolution of each screen and their position in your operating system. We'll use June's dual screen setup as an example. She has:
+Before recording, you need to know the resolution of each screen and their position in your operating system. We'll use a dual screen setup as an example with:
 <ul>
-<li>A 1600x900 laptop screen to her left.</li>
-<li>A 1920x1080 desktop screen to her right.</li>
+<li>a 1600x900 laptop screen on the left.</li>
+<li>a 1920x1080 desktop screen on the right.</li>
 </ul>
 
+<b>Setting up VLC - left screen recording</b>
+<p>If we want to record the laptop screen, we will:
+<ul style="list-style-type:circle">
+<li>Open VLC.</li>
+<li>Click Media > Convert/Save to open the recording menu.</li>
+<li>In the Capture device tab, select Desktop from the Capture mode drop-dowm menu.</li>
+<li>In the Desired frame rate menu, type in your frame rate (she usually goes for 30fps).</li>
+<li>Check Show more options to open more options (yup).</li>
+<li>Add<code>:screen-left=0 :screen-width= 1600 :screen-height=900</code> at the end of the Edit Options field.
+<li>Finally, click Convert/Save.</li>
+</ul>
+</p>
+
 <b>Setting up VLC - right screen recording </b>
-<p>If June wants to record her desktop screen, she will:
+<p>If we want to record the desktop screen, we will:
 <ul style="list-style-type:circle">
 <li>Open VLC.</li>
 <li>Click Media > Convert/Save to open the recording menu.</li>
@@ -29,19 +42,6 @@ Before recording, you need to know the resolution of each screen and their posit
 <li>Finally, click Convert/Save - you are done with the first step!</li>
 </ul>
 You are done with the first step!
-</p>
-
-<b>Setting up VLC - left screen recording</b>
-<p>If June wants to record her laptop screen, she will:
-<ul style="list-style-type:circle">
-<li>Open VLC.</li>
-<li>Click Media > Convert/Save to open the recording menu.</li>
-<li>In the Capture device tab, select Desktop from the Capture mode drop-dowm menu.</li>
-<li>In the Desired frame rate menu, type in your frame rate (she usually goes for 30fps).</li>
-<li>Check Show more options to open more options (yup).</li>
-<li>Add<code>:screen-left=0 :screen-width= 1600 :screen-height=900</code> at the end of the Edit Options field.
-<li>Finally, click Convert/Save.</li>
-</ul>
 </p>
 
 <b>Setting up VLC output</b>
