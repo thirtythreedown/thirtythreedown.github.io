@@ -6,11 +6,11 @@ title: Thirty Three Down Studio
   <h1>[SOFT] The Quick and Dirty Guide to youtube-dl</h1>
 
 <p>
-tl;dr: We wanted to save ourselves some bandwidth and download YouTube videos we love instead of streaming them constantly.
+tl;dr: We wanted to save ourselves some bandwidth and download YouTube videos we love instead of streaming them constantly. Perfect job for a Raspberry Pi we had lying around.
 </p>
 
 <p>
-First off, let's install <code>youtube-dl</code>. You might be tempted to install youtube-dl with a simple <code>apt-get</code>: don't. It will make it harder to get the latest updates for the software down the road. Instead:
+First off, let's install <code>youtube-dl</code> on a fresh Raspbian install. You might be tempted to use a simple <code>apt-get</code>: don't. It will make it harder to get the latest updates for the software down the road. Instead:
 <ul>
 <li>Download the software - <code>sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl</code>.</li>
 <li>Get the permission to execute the software on your Pi - <code>sudo chmod a+rx /usr/local/bin/youtube-dl</code>.</li>
