@@ -1,0 +1,38 @@
+---
+layout: default
+title: Thirty Three Down Studio
+---
+<div class="blurb">
+  <h1>[SOFT] The Quick and Dirty Guide to youtube-dl</h1>
+
+<p>
+tl;dr: We wanted to save ourselves some bandwidth and download YouTube videos we love instead of streaming them constantly.
+</p>
+
+<p>
+First off, let's install <code>youtube-dl</code>. You might be tempted to install youtube-dl with a simple <code>apt-get</code>: don't. It will make it harder to get the latest updates for the software down the road. Instead:
+<ul>
+<li>Download the software - <code>sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl</code>.</li>
+<li>Get the permission to execute the software on your Pi - <code>sudo chmod a+rx /usr/local/bin/youtube-dl</code>.</li>
+<li>After it's done, test the software responds correctly - <code>youtube-dl -U</code>.</li>
+</ul>
+If everything went well, <code>youtube-dl</code> will tell you you have an up-to-date version installed! Now we're ready to download some videos.
+</p>
+
+<p>
+Go to the URL of the video you want to download and, in terminal, type <code>youtube-dl [URL]</code>. The video will download directly to the directory where you are located in two files - one for best video, one for best audio - before mixing both into an <code>.mkv</code> file.<br>
+There are two more things you can do to make your life with <code>youtube-dl</code> even better:
+<ul>
+<li>Download a video and format the title to remove amy special characters - <code>youtube-dl --restrict-filenames [URL]</code></li>
+<li>Download all the videos from a playlist and rename each file with the title of the video - <code>youtube-dl --download-archive archive.txt "[PlaylistURL]"</code></li>
+</ul>
+
+<p>
+That's it! Enjoy the YouTube goodness, all local.
+</p>
+
+<h2>Extra resources</h2>
+<ul style="list-style-type:circle">
+<li><a href="https://github.com/rg3/youtube-dl">youtube-dl repository on GitHub</a></li>
+</ul>
+</div><!-- /.blurb -->
