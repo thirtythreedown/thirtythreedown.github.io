@@ -28,6 +28,9 @@ h1 {
     font-family:'Helvetica', 'Arial', 'Sans-Serif';
 }
 
+/*
+Use the .red class for to format DSGN/ASK/ETC titles
+*/
 .red {
 	background-color: red;
 	color: white;
@@ -36,6 +39,9 @@ h1 {
 	padding: 16.5px;
 }
 
+/*
+Use the .blue class for to format DSGN/ASK/ETC titles
+*/
 .blue {
 	background-color: blue;
 	color: white;
@@ -44,6 +50,9 @@ h1 {
 	padding: 16.5px;
 }
 
+/*
+Use the .black class for to format DSGN/ASK/ETC titles
+*/
 .black {
 	background-color: black;
 	color: white;
@@ -52,6 +61,19 @@ h1 {
 	padding: 16.5px;
 }
 
+/*
+Use .byline for the tl;dr byline under the main title
+*/
+.byline{
+    font-size: 1.3em;
+	font-style: italic;
+    line-height: 1.2em;
+    color: #333;
+}
+	
+/*
+#Generic paragraph formatting
+*/
 p {
     font-size: 1em;
     line-height: 1.2em;
@@ -68,25 +90,25 @@ ul.posts {
     font-size: 1.5em;
 }
 
+/*
+Generic circle bullet formatting titles
+*/
 ul.circle {
     list-style-type: circle;
 }
 
-.byline{
-    font-size: 1.3em;
-	font-style: italic;
-    line-height: 1.2em;
-    color: #333;
-}
-
 .quote {
 	font-size: 1.6em; 
+	font-style: italic;
 	font-weight: bold;
 	text-align: right;
 	color: grey;
 }
 
-div.centerimage {
+/*
+Aligning pictures to screen center
+*/
+.centerimage {
   text-align: center;
   display: block;
 }
