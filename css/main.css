@@ -64,13 +64,13 @@ Use the .black class for to format DSGN/ASK/ETC titles
 /*
 Use .byline for the tl;dr byline under the main title
 */
-.byline{
+.byline {
     font-size: 1.3em;
 	font-style: italic;
     line-height: 1.2em;
     color: #333;
 }
-	
+
 /*
 #Generic paragraph formatting
 */
