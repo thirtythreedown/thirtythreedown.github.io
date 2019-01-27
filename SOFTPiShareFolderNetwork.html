@@ -3,35 +3,82 @@ layout: default
 title: Thirty Three Down Studio
 ---
 <div class="blurb">
-  <h1 class="blue">[SOFT] Sharing Raspberry Pi folders over the network</h1>
+  <h1 class="blue">[SOFT] Easily sharing Raspberry Pi folders over your network</h1>
 
 <p class="byline">
-tl;dr: This is an explanation of why we wrote this piece.
+tl;dr: Forget the outdated, erroneous (or both!) tutorials for Samba out there. Use SSH's SFTP and an FTP client instead.
 </p>
 
-https://raspberrypihq.com/how-to-share-a-folder-with-a-windows-computer-from-a-raspberry-pi/
+<p>
+Reliably sharing files and folders over a local network is one of the first things we wanted to do with a Raspberry Pi computer. There are many, many routers out there and many, many different default options. Because of that, we don't think file- and folder-sharing software Samba is a reliable option (but if it works on your network, more power to you).
+</p>
 
-sudo mkdir -m 1777 [destination folder]
-Reboot
-Network, type in IP address
-\\[URL]
-
+<p>
+Instead of using Samba, we decided to use SFTP, an SSH extension for secure file transfer.
+</p>
+<br>
+<b>Activating SSH</b>
+<p>
 <ul style="list-style-type:circle">
-<li><a href="">This is</a></li>
-<li><a href="">A basic list</a></li>
+<li>In your Pi terminal, start the raspi-config utility - <code>sudo raspi-config</code>.</li>
+<li>In the raspi-config menu, choose option 5 - <code>Interfacing Options</code>.</li>
+<li>In the Interfacing Options menu, choose option P2 - <code>Enable/Disable command line access to your Pi using SSH</code>.</li>
+<li>On the following screen, choose Yes to confirm activating SSH. The next screen will confirm SSH is activated.</li>
+<li>Reboot your Pi.</li>
 </ul>
+</p>
+
+<b>Finding your Pi's IP address</b>
+<p>Now that your Pi has restarted, both SSH and SFTP should be running in the background. Let's find out where it is on our network with the <code>ifconfig</code> command in the terminal. 
+</p>
+
+<p>
+You should be able to find your IP address in the <code>inet</code> field under the corresponding network adapter: <code>eth0</code> if your Raspberry Pi is wired to your router, <code>wlan0</code> if you are using WiFi. It will look like a string of numbers like <code>111.222.3.44</code>. Write that IP address down, we'll be using it in to connect to our Pi in a moment!
+</p>
+
+<b>Connecting to your Pi's SFTP server</b>
+<p>
+Your Pi is now running a SFTP <i>server</i>: we are going to use a SFTP <i>client</i> to access it.
+</p>
+
+<p>
+<ul style="list-style-type:circle">
+<li>Download, install and run a copy of the <a href="https://filezilla-project.org/download.php?type=client">Filezilla FTP client</a>.</li>
+<li>In the Host field, type in the address of your Pi.</li>
+<li>In the Username field, type in your Raspberry Pi username.</li>
+<li>In the Password field, type in your Raspberry Pi password.</li>
+<li>In the Port field, type in 22, the default port for SFTP.</li>
+<li>Finally, click Quickconnect.</li>
+</ul>
+</p>
+
+<p>
+You should now be logged in to your Raspberry Pi, and be able to access all the file and folders you need from there: you can drag and drops to and from your Raspberry Pi directly using the FileZilla client. Congratulations!
+</p>
+
+<b>How do we use it?</b>
+<p>
+We use Raspberry Pis to host a lot of music and video files at the studio. An easy way to use this method to stream media files is to:
+<ul style="list-style-type:circle">
+<li>Connect to your SFTP server.</li>
+<li>Browse to the file or folder you want to open on the server.</li>
+<li>Right-click on the file or folder and select <code>Copy URL(s) to clipboard</code>.</li>
+<li>Open VLC Media Player.</li>
+<li>In the File menu, choose <code>Open location from clipboard</code> (the URL will likely already be filled in, but paste it yourself if needed).</li>
+<li>Click <code>Play</code> or <code>Enqueue</code>, your choice.</li>
+</ul>
+That's it! After a (usually short) loading time, VLC will start playing the file or folder. Enjoy!
+</p>
 
 <h2>Extra resources</h2>
 <ul style="list-style-type:circle">
-<li><a href="">Another</a></li>
-<li><a href="">Basic</a></li>
-<li><a href="">List</a></li>
+<li>Learn more about the SSH File Transfer Protocol <a href="https://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol">on Wikipedia.</a></li>
+<li>You can download Filezilla from <a href="https://filezilla-project.org/">the official website.</a></li>
+<li>You can find explanations on connecting over SFTP from Linux or a Chrome OS device on <a href="https://www.raspberrypi.org/documentation/remote-access/ssh/sftp.md">RaspberryPi.org.</a></li>
 </ul>
-<br>
-<p>
+
 <p class ="byline" align="center">Send us your Raspberry Pi questions <a href="https://t.co/NCBFpSkDIT">here</a>!</p>
 <div class="centerimage">
 	<img src="/assets/lunchbox_raspberry_pi_questions.png" alt="Raspberry Pi questions" width="320" height="320">
 </div>
-</p>
 </div><!-- /.blurb -->
