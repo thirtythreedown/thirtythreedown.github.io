@@ -1,0 +1,41 @@
+---
+layout: default
+title: Thirty Three Down Studio
+---
+<div class="blurb">
+  <h1 class="blue">[SOFT] SAMBA file sharing for the Raspberry Pi</h1>
+
+<p class="byline">
+tl;dr: We had completely given up on SAMBA file sharing on the Raspberry Pi with Windows network. Then Mag Pi Magazine #80 happened.
+</p>
+
+<p>
+Sharing files and folders over a local network is one of the first things we wanted to do with a Raspberry Pi computer.
+There are many, many routers out there and many, many different default options for them. Add to that many, many outdated and sometimes conflicting tutorials on using SAMBA to
+share files over a network and you could understand why we moved to SSH and SFTP file transfer for a while.<br>
+</p>
+
+<p>
+Then <a href=https://www.raspberrypi.org/blog/author/lucy-hattersley/>Lucy Hattersley</a> changed the game with her tutorial in <a href=https://www.raspberrypi.org/magpi/issues/80/>issue 80 of the MagPi Magazine</a>. Follow it to the letter. It works beautifully (at the moment of this writing) and even made Bee a cry a little bit.
+</p>
+
+<p>
+A few extra notes in case you run into any problems while following this tutorial:
+<ul style="list-style-type:circle">
+  <li><b>Read through the whole article</b> before going in: you might miss elements of the tutorial otherwise and get frustrated, and frustration often leads to mistakes.</li>
+  <li>When you create a folder to share in your home user directory, don't use the <code>sudo mkdir /path/to/folder/NameOfFolder</code> command. This will attribute the folder to the <code>root</code> user instead of the <code>pi</code> and you won't have the correct permissions to work with the folder.</li>
+  <li>Just to be sure, you can actually <b>check which user owns a folder</b> with the <code>ls -l</code> command.</li>
+  <li>If your folder is owned by the wrong user, you can either delete it and create a new one with the correct command, or reassign ownership with <code>sudo chown -R pi:pi /path/to/your/folder/FolderName</code>.</li>
+</ul>
+</p>
+
+<p>
+That's it. Once we worked out the kinks listed above and made sure we were sticking to the tutorial instead of skipping ahead out of habit, everything worked like a charm. Enjoy!
+</p>
+
+<p class ="byline" align="center">Send us your Raspberry Pi questions <a href="https://t.co/NCBFpSkDIT">here</a>!</p>
+<div class="centerimage">
+	<img src="/assets/lunchbox_raspberry_pi_questions.png" alt="Raspberry Pi questions" width="320" height="320">
+</div>
+
+</div><!-- /.blurb -->

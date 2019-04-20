@@ -3,14 +3,14 @@ layout: default
 title: Thirty Three Down Studio
 ---
 <div class="blurb">
-  <h1 class="blue">[SOFT] Easily sharing Raspberry Pi folders over your network</h1>
+  <h1 class="blue">[SOFT] Easy SFTP file transfer for the Raspberry Pi</h1>
 
 <p class="byline">
-tl;dr: Forget the outdated, erroneous (or both!) tutorials for Samba out there. Use SSH's SFTP and an FTP client instead.
+tl;dr: Need to drop off files on a Raspberry Pi real quick? SSH and SFTP file transfers to the rescue.
 </p>
 
 <p>
-Sharing files and folders over a local network is one of the first things we wanted to do with a Raspberry Pi computer. There are many, many routers out there and many, many different default options. Because of that, we think file- and folder-sharing software Samba is not always reliable option (but if it works on your network, more power to you).
+SAMBA file sharing is great when it works, but sometimes a router on your network is going to give you a hard time or you only need a one-off transfer. The SSH protocol allows you to transfer files and folders to your Raspberry Pi over Secure File Transfer Protocol out of the box.
 </p>
 
 <p>
@@ -35,7 +35,7 @@ Instead of using Samba, we decided to use SFTP, an SSH extension for secure file
 </p>
 
 <b>Finding your Pi's IP address</b>
-<p>Now that your Pi has restarted, both SSH and SFTP should be running in the background. Let's find out where it is on our network with the <code>ifconfig</code> command in the terminal. 
+<p>Now that your Pi has restarted, both SSH and SFTP should be running in the background. Let's find out where it is on our network with the <code>ifconfig</code> command in the terminal.
 </p>
 
 <p>
