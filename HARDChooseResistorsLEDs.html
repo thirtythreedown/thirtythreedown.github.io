@@ -1,0 +1,86 @@
+---
+layout: default
+title: Thirty Three Down Studio
+---
+<div class="blurb">
+
+<h1 class="red">[HARD] Choosing resistor values for an LED circuit</h1>
+
+<p class="byline">
+tl;dr: Every once in a while we need to re-learn how to choose resistors for an LED circuit. Here it is.
+</p>
+
+<p>
+We use resistors in electronics to protect components from the electricity that gives them life - especially the part they do not use: that is why the resistors will work to dissipate. And while things have gotten better in the last few years, yes, LEDs do burn.
+</p>
+
+<p>
+Resistors come in several resistance values, measured in Ohms. You pick the appropriate value in Ohms for the resistor based on how much energy it needs to dissipate. And now for the big question: how do you choose the correct value for the resistor you need?
+</p>
+
+<p class="quote">
+"Yes, there will be maths."
+</p>
+
+<p>
+To choose the appropriate resistor for your project, you're going to know three things:
+<ul class="circle">
+<li><b>Power supply voltage</b> in Volts, and current in Amperes: how much electricity in Volts is supplied to your LEDs.</li>
+<li><b>Forward voltage drop</b>: how much of that voltage is left after the LED.</li>
+<li><b>The desired current</b> across the LED: the datasheet for your LED will usually give you that information. Too low and your LED won't shine too much. Too high and it will burn right out.</li>
+</ul>
+</p>
+
+<p>
+For example, let's check the details from <a href=https://www.sparkfun.com/products/9590>a basic Sparkfun red LED</a>. From the product page's Features:
+<ul class="circle">
+<li><b>Voltage drop</b>: 1.8V to 2.2V</li>
+<li><b>Max current</b>: 20mA</li>
+<li><b>Suggested current</b>: 16mA to 18mA</li>
+</ul>
+And we are going to assume we power that LED from a 9 Volts battery. According to <a href=https://electronics.stackexchange.com/questions/67092/how-much-current-can-i-draw-from-the-arduinos-pins>our friends at StackExchange</a>, we can pull a max of 150mA out of it.
+</p>
+<p>
+And just like that, we have all the information we need to do our maths - because yes, there will be maths! - and choose our resistor with the following magic formula:
+</p>
+
+<p>
+<b>Resistance</b> (in Kilohms) = (Power supply Voltage in Volts - Voltage drop in Volts)/Desired current in LED in Amps
+</p>
+
+<p>
+First, we replace all the terms in the formula with the information we know.
+</p>
+
+<p>
+<b>Resistance</b> (in Kilohms) = (9 - 1.8)/16
+</p>
+
+<p>
+Next, we substract the voltage drop value from our power supply voltage.
+</p>
+
+<p>
+<b>Resistance</b> = (7.2)/16
+</p>
+
+<p>
+Finally, we divide the leftover voltage value by the desired amperage in the LED.
+</p>
+
+<p>
+<b>Resistance</b> = 0.45 Kilohms, or 450 Ohms
+</p>
+
+And that's it. You might not have the exact resistor you need in your kit, but that's alright: just make sure to select the next resistor value that you have instead. For example, you might not have a 0.45 Kilohms/450 Ohms resistor, but you might have a 550 Ohms resistor instead: use that.
+
+<h2>Extra resources</h2>
+<p>
+Resistors and electronics - complex topic. Here are a few more links to help you figure them out.
+</p>
+<ul class="circle">
+<li>LED circuit article on Wikipedia - <a href="https://en.wikipedia.org/wiki/LED_circuit">https://en.wikipedia.org/wiki/LED_circuit</a></li>
+<li>Component of the month: resistor on MAKE Magazine - <a href="https://makezine.com/2013/04/01/component-of-the-month-resistors/">https://makezine.com/2013/04/01/component-of-the-month-resistors/</a></li>
+<li>MAKE: Electronics by Charles Platt (USD24.99) - <a href="https://www.makershed.com/products/make-electronics-2ed">https://www.makershed.com/products/make-electronics-2ed</a></li>
+</ul>
+</div><!-- /.blurb -->
