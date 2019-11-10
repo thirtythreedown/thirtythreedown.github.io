@@ -12,9 +12,9 @@ tl;dr: We wanted to save ourselves some bandwidth and download YouTube videos we
 <p>
 First off, let's install <code>youtube-dl</code> on a fresh Raspbian install. You might be tempted to use a simple <code>apt-get</code>: don't. It will make it harder to get the latest updates for the software down the road. Instead:
 <ul>
-<li>Download the software - <code>sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl</code>.</li>
-<li>Get the permission to execute the software on your Pi - <code>sudo chmod a+rx /usr/local/bin/youtube-dl</code>.</li>
-<li>After it's done, test the software responds correctly - <code>youtube-dl -U</code>.</li>
+<li>Download the software - <code>sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl</code></li>
+<li>Get the permission to execute the software on your Pi - <code>sudo chmod a+rx /usr/local/bin/youtube-dl</code></li>
+<li>After it's done, test the software responds correctly - <code>youtube-dl -U</code></li>
 </ul>
 If everything went well, <code>youtube-dl</code> will tell you you have an up-to-date version installed! Now we're ready to download some videos.
 </p>
