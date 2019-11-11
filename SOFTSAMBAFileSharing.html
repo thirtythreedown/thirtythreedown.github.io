@@ -26,6 +26,9 @@ A few extra notes in case you run into any problems while following this tutoria
   <li>When you create a folder to share in your home user directory, don't use the <code>sudo mkdir /path/to/folder/NameOfFolder</code> command. This will attribute the folder to the <code>root</code> user instead of the <code>pi</code> and you won't have the correct permissions to work with the folder.</li>
   <li>Just to be sure, you can actually <b>check which user owns a folder</b> with the <code>ls -l</code> command.</li>
   <li>If your folder is owned by the wrong user, you can either delete it and create a new one with the correct command, or reassign ownership with <code>sudo chown -R pi:pi /path/to/your/folder/FolderName</code>.</li>
+  <li>When you try to access your folders from Windows' Explorer remember to include the Raspberry Pi's username in the folder path - otherwise you won't reach anything! For example, if your Pi's IP address is <code>192.168.0.33</code> and your username is the default <code>pi</code>, access your shared folder with <code>\\192.168.0.33\pi_user\shared\</code>.
+  <li>If you create your folder inside the <code>pi</code> user directory, and make that user directory available, make sure to make that directory readable <i>and</i> writable in <code>smb.conf</code>! To do that, add a <code>readonly = no</code> line in the <code>homes</code> section of <code>smb.conf</code>. 
+
 </ul>
 </p>
 
